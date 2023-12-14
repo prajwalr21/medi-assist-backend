@@ -8,6 +8,6 @@ export const cors = (req: Request, res: Response, next: NextFunction) => {
     if (req.method === 'OPTIONS') {
         return res.sendStatus(200)
     }
-    console.log('Cors done')
+    console.log('Cors done  ')
     next()
 }
