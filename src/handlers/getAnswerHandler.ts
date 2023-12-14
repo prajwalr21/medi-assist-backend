@@ -10,10 +10,10 @@ interface Message {
   }
 
 const MODEL_NAME = "models/chat-bison-001";
-console.log("API_KEY", API_KEY)
+// console.log("API_KEY", API_KEY)
 
 const client = new DiscussServiceClient({
-  authClient: new GoogleAuth().fromAPIKey(API_KEY ?? ''),
+  authClient: new GoogleAuth().fromAPIKey("AIzaSyA07JBqiSY2njMG23G63bClU5GN6TQDR0Y"),
 });
 
 export const getAnswerHandler = async (req: Request, res: Response) => {
