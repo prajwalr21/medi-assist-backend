@@ -10,6 +10,7 @@ interface Message {
   }
 
 const MODEL_NAME = "models/chat-bison-001";
+console.log("API_KEY", API_KEY)
 
 const client = new DiscussServiceClient({
   authClient: new GoogleAuth().fromAPIKey(API_KEY ?? ''),
