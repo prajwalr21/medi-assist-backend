@@ -20,6 +20,7 @@ export const getAnswerHandler = async (req: Request, res: Response) => {
     try {
         console.log('Inside get answer handler')
         const messages = req.body.messages as Message[]
+        console.log(messages)
         const operationType = req.body['operation-type']
         console.log('Operation type: ' + operationType)
         const prompt = getPrompt(operationType)
