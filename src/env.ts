@@ -1,4 +1,4 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-export const API_KEY =  process.env.PALM_API_KEY
+export const API_KEY =  process.env.API_KEY
