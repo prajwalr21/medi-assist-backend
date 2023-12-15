@@ -12,7 +12,7 @@ export const classifier = async (req: Request, res: Response, next: NextFunction
     const MODEL_NAME = "models/text-bison-001";
 
     const client = new TextServiceClient({
-        authClient: new GoogleAuth().fromAPIKey(API_KEY ?? ''),
+        authClient: new GoogleAuth().fromAPIKey('AIzaSyA07JBqiSY2njMG23G63bClU5GN6TQDR0Y'),
     });
     const response = await client.generateText({
         model: MODEL_NAME,
