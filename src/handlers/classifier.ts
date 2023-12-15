@@ -5,6 +5,7 @@ import { GoogleAuth } from "google-auth-library";
 import { API_KEY } from "../env";
 
 export const classifier = async (req: Request, res: Response, next: NextFunction) => {
+    console.log('API_KEY', API_KEY)
     try {
         const context = JSON.stringify(req.body.messages)  
         const input = `${getPrompt('classifier')}\nJSON:${context}`
