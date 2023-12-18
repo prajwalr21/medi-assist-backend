@@ -5,7 +5,6 @@ import { GoogleAuth } from "google-auth-library";
 import { API_KEY } from "../env";
 
 export const classifier = async (req: Request, res: Response, next: NextFunction) => {
-    console.log('API_KEY', API_KEY)
     try {
         const context = JSON.stringify(req.body.messages)  
         const input = `${getPrompt('classifier')}\nJSON:${context}`
@@ -21,9 +20,7 @@ export const classifier = async (req: Request, res: Response, next: NextFunction
                 text: input
             }
         })
-        console.log(response[0])
         if (response[0].candidates) {
-            console.log('CLASSIFIER - ', response[0].candidates[0].output)
             const classification = response[0].candidates[0].output.toLowerCase().includes('serious') ? 'serious' : 'normal'
             if (classification === 'normal') {
                 next()
@@ -35,7 +32,6 @@ export const classifier = async (req: Request, res: Response, next: NextFunction
             }
         }
     } catch (e) {
-        console.log(e)
         res.json({
             type: 'assistant',
             content: 'Sorry for the inconvenience, something went wrong'

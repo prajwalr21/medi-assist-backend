@@ -17,23 +17,18 @@ const client = new DiscussServiceClient({
 
 export const getAnswerHandler = async (req: Request, res: Response) => {
     try {
-        console.log('Inside get answer handler')
         const messages = req.body.messages as Message[]
-        console.log("MEssages - ", messages)
         const operationType = req.body['operation-type']
-        console.log('Operation type: ' + operationType)
         const prompt = getPrompt(operationType)
-        console.log(prompt)
         const result = await client.generateMessage({
-          model: MODEL_NAME, // Required. The model to use to generate the result.
-          temperature: 0, // Optional. Value `0.0` always uses the highest-probability result.
-          candidateCount: 1, // Optional. The number of candidate results to generate.
+          model: MODEL_NAME,
+          temperature: 0,
+          candidateCount: 1,
           prompt: {
             context: prompt,
             messages,
           },
         });
-        console.log(result[0])
         if (result[0].candidates) {
             return res.status(200).json({
                 type: 'assistant',
@@ -41,7 +36,6 @@ export const getAnswerHandler = async (req: Request, res: Response) => {
             })
         }
     } catch(e) {
-        console.log(e)
         res.status(200).json({
             type: 'assistant',
             content: 'Sorry for the inconvenience, something went wrong'
